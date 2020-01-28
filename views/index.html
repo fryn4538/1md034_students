@@ -81,7 +81,7 @@
 
 	<p>
 	  <label for="email">Fyll i email</label><br>
-	  <input type="text" id="email" name="em" required="required" placeholder="Email" />
+	  <input type="email" id="email" name="em" required="required" placeholder="Email" />
 	</p>
 
 	<p>
@@ -91,17 +91,25 @@
 
 	<p>
 	  <label for="number">Fyll i husnummer</label><br>
-	  <input type="text" id="number" name="nu" required="required" placeholder="Husnummer" />
+	  <input type="number" id="number" name="nu" required="required" placeholder="Husnummer" />
 	</p>
 
 	<p>
-	  <label for="recipient">Recipient</label><br />
-	  <select id="recipient" name="rcp">
+	  <label for="payment">Betalningsmetod</label><br />
+	  <select id="payment" name="pay">
             <option selected="selected">Kort</option>
             <option>Faktura</option>
             <option>Swish</option>
             <option>Natura</option>
           </select>
+	</p>
+
+	<p>
+	  <label>Kön</label><br />
+            <input type="radio">Man</br></input>
+	    <input type="radio">Kvinna</br></input>
+	    <input type="radio">Ickebinär</br></input>
+	    <input type="radio" checked="checked">Vill ej svara</br></input>
 	</p>
       </section>
     </main>
