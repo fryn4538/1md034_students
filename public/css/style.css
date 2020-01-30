@@ -6,3 +6,13 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 1.2em;
 }
+
+.lactose {
+    color: maroon;
+    font-weight: bold;
+}
+
+.gluten {
+    color: blue;
+    font-weight: bold;
+}
