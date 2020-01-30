@@ -43,6 +43,29 @@ table {
     font-weight: bold;
 }
 
+.wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 33% 33% 33%;
+    margin: 0 auto;
+}
+
+.a {
+    grid-column: 1;
+    margin: 0 auto;
+}
+
+.b {
+    grid-column: 2;
+    margin: 0 auto;
+}
+
+.c {
+    grid-column: 3;
+    margin: 0 auto;
+}
+
+
 #burger {
     color: white;
     background-color: black;
