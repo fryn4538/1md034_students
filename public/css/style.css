@@ -5,10 +5,16 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 1.2em;
+    margin: 0 auto;
 }
 
 button:hover {
     cursor: pointer;
+}
+
+table {
+    width: 100vw;
+    margin: 0 auto;
 }
 
 .lactose {
