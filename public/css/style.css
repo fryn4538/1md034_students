@@ -17,6 +17,13 @@ button:hover {
     cursor: pointer;
 }
 
+h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -950%);
+}
+
 section {
     margin: 0 50px 0 50px;
     padding: 10px;
@@ -44,10 +51,14 @@ table {
 
 #header {
     margin: 0 50px 0 50px;
+    height: 10em;
+    overflow: hidden;
 }
 
 #headImg {
     opacity: 0.5;
+    height: auto;
+    width: 100vw;
 }
 
 #info {
