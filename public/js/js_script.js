@@ -5,10 +5,9 @@ function menuItem(name, kcal, lact, glut, vegan, path) {
     this.glut = glut;
     this.vegan = vegan;
     this.path = path;
-}
-
-function info(item) {
-    return item.name + ' contains ' + item.kcal + ' kCal';
+    this.info = function(){
+			return this.name + ' contains ' + this.kcal + ' kCal';
+		};
 }
 
 let snesko = new menuItem('Snesko burger', 999, true, true, false, 'https://www.burgerdudes.se/wp-content/uploads/2018/09/shadyburger_basic_burger_stefan_med.jpg');
@@ -40,8 +39,8 @@ let summit = new menuItem('Summit burger',
 			  true,
 			  'https://cdn-rdb.arla.com/Files/arla-se/2409428905/01a6ac3d-4676-4781-8643-5cbf4387d9dd.jpeg?mode=crop&w=479&h=335&ak=f525e733&hm=d7d1b1dd');
 
-console.log(info(snesko) + '\n' +
-	    info(leMonde) + '\n' +
-	    info(laFolieDouce) + '\n' +
-	    info(theFrog) + '\n' +
-	    info(summit));
+document.getElementById("snesko").innerHTML = snesko.info();
+document.getElementById("leMonde").innerHTML = leMonde.info();
+document.getElementById("laFolieDouce").innerHTML = laFolieDouce.info();
+document.getElementById("theFrog").innerHTML = theFrog.info();
+document.getElementById("summit").innerHTML = summit.info();
