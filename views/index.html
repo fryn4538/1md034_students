@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <script defer src="https://vuejs.org/js/vue.js"></script>
+    <script defer type="text/javascript" src="js/menu.js"></script>
     <script defer src="js/js_script.js"></script>
     <script defer src="js/vue_script.js"></script>
   </head>
@@ -23,23 +24,23 @@
 
 	<div id="wrap">
 	  <div class="wrapper">
-	    <div v-for="burger in burgers" style="margin: 0 auto; grid-column: praseInt(burger) + 1">
+	    <div v-for="burger in food" style="margin: 0 auto; grid-column: praseInt(burger) + 1">
 	      <h4>{{ burger.name }}</h4>
 	    </div>
 	  </div>
 
 	  <div class="wrapper">
-	    <div v-for="burger in burgers" style="margin: 0 auto; grid-column: praseInt(burger) + 1">
-	      <img v-bind:src="burger.path" alt="Span" title="Another in-line element" width="300" height="200">
+	    <div v-for="burger in food" style="margin: 0 auto; grid-column: praseInt(burger) + 1">
+	      <img v-bind:src="burger.img" alt="Span" title="Another in-line element" width="300" height="200">
 	    </div>
 	  </div>
 
 	  <div class="wrapper">
-	    <div v-for="burger in burgers" style="margin: 0 auto; grid-column: praseInt(burger) + 1">
+	    <div v-for="burger in food" style="margin: 0 auto; grid-column: praseInt(burger) + 1">
 	      <ul>
 		<li>{{ burger.kcal }} kCal</li>
-		<li v-if="burger.lact" class="lactose">Innehåller laktos</li>
-		<li v-if="burger.glut" class="gluten">Innehåller gluten</li>
+		<li v-if="burger.lactose" class="lactose">Innehåller laktos</li>
+		<li v-if="burger.gluten" class="gluten">Innehåller gluten</li>
 		<li v-if="burger.vegan">Vegansk</li>
 	      </ul>
 	    </div>
