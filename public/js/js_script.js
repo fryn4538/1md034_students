@@ -39,8 +39,32 @@ let summit = new menuItem('Summit burger',
 			  true,
 			  'https://cdn-rdb.arla.com/Files/arla-se/2409428905/01a6ac3d-4676-4781-8643-5cbf4387d9dd.jpeg?mode=crop&w=479&h=335&ak=f525e733&hm=d7d1b1dd');
 
-document.getElementById("snesko").innerHTML = snesko.info();
-document.getElementById("leMonde").innerHTML = leMonde.info();
-document.getElementById("laFolieDouce").innerHTML = laFolieDouce.info();
-document.getElementById("theFrog").innerHTML = theFrog.info();
-document.getElementById("summit").innerHTML = summit.info();
+let menu = [snesko, leMonde, laFolieDouce, theFrog, summit];
+
+let myElement = document.getElementById("myID");
+
+for (burger in menu)
+{
+	let listItem = document.createElement("li");
+  let listValue = document.createTextNode(menu[burger].info());
+  listItem.appendChild(listValue);
+  if(menu[burger].lact){
+  	let lact = document.createTextNode(', lactose');
+  	listItem.appendChild(lact);
+  }
+  if(menu[burger].glut){
+  	let glut = document.createTextNode(', gluten');
+  	listItem.appendChild(glut);
+  }
+  if(menu[burger].vegan){
+  	let glut = document.createTextNode(', vegan');
+  	listItem.appendChild(glut);
+  }
+  myElement.appendChild(listItem);
+}
+
+/* document.getElementById("snesko").innerHTML = snesko.info(); */
+/* document.getElementById("leMonde").innerHTML = leMonde.info(); */
+/* document.getElementById("laFolieDouce").innerHTML = laFolieDouce.info(); */
+/* document.getElementById("theFrog").innerHTML = theFrog.info(); */
+/* document.getElementById("summit").innerHTML = summit.info(); */

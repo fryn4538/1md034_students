@@ -55,3 +55,16 @@ const vm = new Vue({
     summit: summit.info()
   }
 })
+
+const vm = new Vue({
+  el: '#myID',
+  data: {
+    burgers: [
+    	snesko,
+      leMonde,
+      laFolieDouce,
+      theFrog,
+      summit
+    ]
+  }
+})
