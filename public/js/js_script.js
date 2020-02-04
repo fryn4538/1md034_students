@@ -1,3 +1,4 @@
+
 function menuItem(name, kcal, lact, glut, vegan, path) {
     this.name = name;
     this.kcal = kcal;
@@ -6,11 +7,17 @@ function menuItem(name, kcal, lact, glut, vegan, path) {
     this.vegan = vegan;
     this.path = path;
     this.info = function(){
-			return this.name + ' contains ' + this.kcal + ' kCal';
-		};
+	return this.name + ' contains ' + this.kcal + ' kCal';
+    };
 }
 
-let snesko = new menuItem('Snesko burger', 999, true, true, false, 'https://www.burgerdudes.se/wp-content/uploads/2018/09/shadyburger_basic_burger_stefan_med.jpg');
+let snesko = new menuItem('Snesko burger',
+			  999,
+			  true,
+			  true,
+			  false,
+			  'https://www.burgerdudes.se/wp-content/uploads/2018/09/shadyburger_basic_burger_stefan_med.jpg');
+
 let leMonde = new menuItem('Le Monde burger',
 			   1,
 			   false,
@@ -39,32 +46,86 @@ let summit = new menuItem('Summit burger',
 			  true,
 			  'https://cdn-rdb.arla.com/Files/arla-se/2409428905/01a6ac3d-4676-4781-8643-5cbf4387d9dd.jpeg?mode=crop&w=479&h=335&ak=f525e733&hm=d7d1b1dd');
 
-let menu = [snesko, leMonde, laFolieDouce, theFrog, summit];
+let menu = [snesko, leMonde, laFolieDouce];
 
-let myElement = document.getElementById("myID");
+let wrap = document.getElementById("wrap");
+
+let burgerName = document.createElement("div");
+let burgerPic = document.createElement("div");
+let burgerInfo = document.createElement("div");
+
+burgerName.setAttribute('class', 'wrapper');
+burgerPic.setAttribute('class', 'wrapper');
+burgerInfo.setAttribute('class', 'wrapper');
+
+burgerName.setAttribute('id', 'burgerName');
+burgerPic.setAttribute('id', 'burgerPic');
+burgerInfo.setAttribute('id', 'burgerInfo');
+
 
 for (burger in menu)
 {
-	let listItem = document.createElement("li");
-  let listValue = document.createTextNode(menu[burger].info());
-  listItem.appendChild(listValue);
-  if(menu[burger].lact){
-  	let lact = document.createTextNode(', lactose');
-  	listItem.appendChild(lact);
-  }
-  if(menu[burger].glut){
-  	let glut = document.createTextNode(', gluten');
-  	listItem.appendChild(glut);
-  }
-  if(menu[burger].vegan){
-  	let glut = document.createTextNode(', vegan');
-  	listItem.appendChild(glut);
-  }
-  myElement.appendChild(listItem);
+    let heading = document.createElement("div");
+    heading.style.margin = "0 auto";
+    heading.style.gridColumn = parseInt(burger) + 1;
+    console.log(burger);
+    let header = document.createElement("h4");
+    let headTxt = document.createTextNode(menu[burger].name);
+    header.appendChild(headTxt);
+    heading.appendChild(header);
+    burgerName.appendChild(heading);
+
+    let pic = document.createElement("div");
+    pic.style.margin = "0 auto";
+    pic.style.gridColumn = parseInt(burger) + 1;
+    let img = document.createElement("img");
+    img.style.height = "200px";
+    img.style.width = 300;
+    img.src = menu[burger].path;
+    pic.appendChild(img);
+    burgerPic.appendChild(pic);
+
+    let info = document.createElement("div");
+    info.style.margin = "0 auto";
+    info.style.gridColumn = parseInt(burger) + 1;
+    let ul = document.createElement("ul");
+    
+    let kcalLi = document.createElement("li");
+    let kcalTxt = document.createTextNode(menu[burger].kcal + "kCal");
+    kcalLi.appendChild(kcalTxt);
+    ul.appendChild(kcalLi);
+    
+    if(menu[burger].lact){
+	let lactLi = document.createElement("li");
+	lactLi.setAttribute('class', 'lactose');
+  	let lact = document.createTextNode('Innehåller laktos');
+  	lactLi.appendChild(lact);
+	ul.appendChild(lactLi);
+    }
+    if(menu[burger].glut){
+	let glutLi = document.createElement("li");
+	glutLi.setAttribute('class', 'gluten');
+  	let glut = document.createTextNode('Innehåller gluten');
+  	glutLi.appendChild(glut);
+	ul.appendChild(glutLi);
+    }
+    if(menu[burger].vegan){
+	let veganLi = document.createElement("li");
+  	let vegan = document.createTextNode('Vegan');
+	veganLi.appendChild(vegan);
+	ul.appendChild(veganLi);
+    }
+
+    info.appendChild(ul);
+    burgerInfo.appendChild(info);
 }
+wrap.appendChild(burgerName);
+wrap.appendChild(burgerPic);
+wrap.appendChild(burgerInfo);
 
 /* document.getElementById("snesko").innerHTML = snesko.info(); */
 /* document.getElementById("leMonde").innerHTML = leMonde.info(); */
 /* document.getElementById("laFolieDouce").innerHTML = laFolieDouce.info(); */
 /* document.getElementById("theFrog").innerHTML = theFrog.info(); */
 /* document.getElementById("summit").innerHTML = summit.info(); */
+

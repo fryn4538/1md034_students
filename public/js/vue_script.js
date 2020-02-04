@@ -1,4 +1,4 @@
-function menuItem(name, kcal, lact, glut, vegan, path) {
+/*function menuItem(name, kcal, lact, glut, vegan, path) {
     this.name = name;
     this.kcal = kcal;
     this.lact = lact;
@@ -67,4 +67,4 @@ const vm = new Vue({
       summit
     ]
   }
-})
+})*/
