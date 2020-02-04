@@ -37,14 +37,14 @@ let summit = new menuItem('Summit burger',
 			  false,
 			  true,
 			  true,
-			  'https://cdn-rdb.arla.com/Files/arla-se/2409428905/01a6ac3d-4676-4781-8643-5cbf4387d9dd.jpeg?mode=crop&w=479&h=335&ak=f525e733&hm=d7d1b1dd');
+			  'https://cdn-rdb.arla.com/Files/arla-se/2409428905/01a6ac3d-4676-4781-8643-5cbf4387d9dd.jpeg?mode=crop&w=479&h=335&ak=f525e733&hm=d7d1b1dd');*/
 
 //document.getElementById("snesko").innerHTML = snesko.info();
 //document.getElementById("leMonde").innerHTML = leMonde.info();
 //document.getElementById("laFolieDouce").innerHTML = laFolieDouce.info();
 //document.getElementById("theFrog").innerHTML = theFrog.info();
 //document.getElementById("summit").innerHTML = summit.info();
-
+/*
 const vm = new Vue({
   el: '#myID',
   data: {
@@ -55,16 +55,14 @@ const vm = new Vue({
     summit: summit.info()
   }
 })
-
+*/
 const vm = new Vue({
-  el: '#myID',
-  data: {
-    burgers: [
-    	snesko,
-      leMonde,
-      laFolieDouce,
-      theFrog,
-      summit
-    ]
-  }
-})*/
+    el: '#wrap',
+    data: {
+	burgers: [
+    	    snesko,
+	    leMonde,
+	    laFolieDouce
+	]
+    }
+})
