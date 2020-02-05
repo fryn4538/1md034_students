@@ -80,4 +80,33 @@ wrap.appendChild(burgerInfo);
 /* document.getElementById("laFolieDouce").innerHTML = laFolieDouce.info(); */
 /* document.getElementById("theFrog").innerHTML = theFrog.info(); */
 /* document.getElementById("summit").innerHTML = summit.info(); */
+/*
 
+let buttonFunc = function () {
+    console.log("Button clicked!")
+};
+
+let inputFunc = function () {
+    var name = document.getElementById("fullname").value;
+    var email = document.getElementById("email").value;
+    var adress = document.getElementById("adress").value;
+    var number = document.getElementById("number").value;
+    var payment = document.getElementById("payment").value;
+    var gender = document.getElementsByName('gender');
+    var genderValue;
+    for (var i = 0, length = gender.length; i < length; i++) {
+	if (gender[i].checked) {
+	    // do whatever you want with the checked rad
+	    genderValue = gender[i].value;
+	    // only one radio can be logically checked, don't check the rest
+	    break;
+	}
+    }
+    console.log([name, email, adress, number, payment, genderValue]);
+    return [name, email, adress, number, payment, genderValue];
+};
+
+let btn = document.getElementById("order");
+btn.addEventListener("click", buttonFunc);
+btn.addEventListener("click", inputFunc);
+*/

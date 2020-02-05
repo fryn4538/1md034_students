@@ -22,29 +22,24 @@
 	<h3>Välj burgare</h3>
 	<p>Här väljer du vilken burgare du vill beställa</p>
 
-	<div id="wrap">
-	  <div class="wrapper">
-	    <div v-for="burger in food" style="margin: 0 auto; grid-column: praseInt(burger) + 1">
-	      <h4>{{ burger.name }}</h4>
-	    </div>
-	  </div>
+	<div id="wrap" class="wrapper">
+	    <div v-for="burger in food">
+	      <div style="margin: 0 auto; grid-column: praseInt(burger);" >
+		<h4>{{ burger.name }}</h4>
 
-	  <div class="wrapper">
-	    <div v-for="burger in food" style="margin: 0 auto; grid-column: praseInt(burger) + 1">
-	      <img v-bind:src="burger.img" alt="Span" title="Another in-line element" width="300" height="200">
+		<img v-bind:src="burger.img" alt="Span" title="Another in-line element" width="300" height="200">
+	
+		<p><input v-bind:id="burger.name" type="checkbox" v-model="burgerChoice" name="burger.name" v-bind:value="burger.name"></p>
+		
+		<ul>
+		  <li>{{ burger.kcal }} kCal</li>
+		  <li v-if="burger.lactose" class="lactose">Innehåller laktos</li>
+		  <li v-if="burger.gluten" class="gluten">Innehåller gluten</li>
+		  <li v-if="burger.vegan">Vegansk</li>
+		</ul>
+	      </div>
 	    </div>
-	  </div>
-
-	  <div class="wrapper">
-	    <div v-for="burger in food" style="margin: 0 auto; grid-column: praseInt(burger) + 1">
-	      <ul>
-		<li>{{ burger.kcal }} kCal</li>
-		<li v-if="burger.lactose" class="lactose">Innehåller laktos</li>
-		<li v-if="burger.gluten" class="gluten">Innehåller gluten</li>
-		<li v-if="burger.vegan">Vegansk</li>
-	      </ul>
-	    </div>
-	  </div>
+	  
 	</div>
 	
       </section>
@@ -56,27 +51,27 @@
 	<h4>Leveransinformation</h4>
 	<p>
 	  <label for="fullname">Fyll i för- och eftername</label><br>
-	  <input type="text" id="fullname" name="fn" required="required" placeholder="För- och efternamn" />
+	  <input v-model="name" type="text" id="fullname" name="fn" required="required" placeholder="För- och efternamn" />
 	</p>
 
 	<p>
 	  <label for="email">Fyll i email</label><br>
-	  <input type="email" id="email" name="em" required="required" placeholder="Email" />
+	  <input v-model="email"  type="email" id="email" name="em" required="required" placeholder="Email" />
 	</p>
 
 	<p>
 	  <label for="adress">Fyll i adress</label><br>
-	  <input type="text" id="adress" name="ad" required="required" placeholder="Adress" />
+	  <input v-model="street" type="text" id="adress" name="ad" required="required" placeholder="Adress" />
 	</p>
 
 	<p>
 	  <label for="number">Fyll i husnummer</label><br>
-	  <input type="number" id="number" name="nu" required="required" placeholder="Husnummer" />
+	  <input v-model="num" type="number" id="number" name="nu" required="required" placeholder="Husnummer" />
 	</p>
 
 	<p>
 	  <label for="payment">Betalningsmetod</label><br />
-	  <select id="payment" name="pay">
+	  <select id="payment" name="pay" v-model="selected">
             <option selected="selected">Kort</option>
             <option>Faktura</option>
             <option>Swish</option>
@@ -86,14 +81,21 @@
 
 	<p>
 	  <label>Kön</label><br />
-            <input type="radio">Man</br></input>
-	    <input type="radio">Kvinna</br></input>
-	    <input type="radio">Ickebinär</br></input>
-	    <input type="radio" checked="checked">Vill ej svara</br></input>
+            <input type="radio" name="gender" value="Man" v-model="picked">Man</br>
+	    <input type="radio" name="gender" value="Kvinna" v-model="picked">Kvinna</br>
+	    <input type="radio" name="gender" value="Ickebinär" v-model="picked">Ickebinär</br>
+	    <input type="radio" name="gender" value="Vill ej svara" checked="checked" v-model="picked">Vill ej svara
 	</p>
+	<button v-on:click="markDone(name, email, street, num, selected, picked)" type="submit" id="order">
+	  <img src="https://image.flaticon.com/icons/png/512/126/126083.png" height="32px"/> Lägg beställning
+	</button>
+
+	<div id="orderInfo">
+	  <h4>Din beställning</h4>
+	</div>
       </section>
 
-      <button type="submit"><img src="https://image.flaticon.com/icons/png/512/126/126083.png" height="32px"/> Lägg beställning</button>
+     
     </main>
 
     <footer>
