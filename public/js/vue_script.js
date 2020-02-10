@@ -32,7 +32,7 @@ const gm = new Vue({
     }
 })
 
-const vuem = new Vue({
+const vm = new Vue({
     el: '#info',
     data: {
 	name:"",
@@ -42,19 +42,13 @@ const vuem = new Vue({
 	selected:"",
 	picked:"",
 	orders: {},
-    },
-    created: function() {
-	socket.on('initialize', function(data) {
-	    this.orders = data.orders;
-	}.bind(this));
-	socket.on('currentQueue', function(data) {
-	    this.orders = data.orders;
-	}.bind(this));
+	localOrder: {orderId: "", details: {x:0, y:0}, orderItems: []},
+	counter: 0
     },
     methods: {
         markDone: function(name, email, selected, picked) {
 	    let order = [name, email, selected, picked];
-	    let arr = vm.getBurger();
+	    let arr = gm.getBurger();
 	    let div = document.getElementById("orderInfo");
 	    for(let i = 0; i < order.length; i++){
 		let foo = document.createElement("p");
@@ -62,6 +56,7 @@ const vuem = new Vue({
 		foo.appendChild(fooTxt);
 		div.appendChild(foo);
 	    }
+	    this.addOrder(picked);
 	    for(let i = 0; i < arr.length; i++){
 		let foo = document.createElement("p");
 		let fooTxt = document.createTextNode(arr[i]);
@@ -71,24 +66,33 @@ const vuem = new Vue({
 	    
         },
 	getNext: function() {
-	    let lastOrder = Object.keys(this.orders).reduce(function(last, next) {
-		return Math.max(last, next);
-	    }, 0);
-	    return lastOrder + 1;
+	    this.counter++;
+	    return this.counter;
 	},
-	addOrder: function(event) {
+	addOrder: function(picked) {
+	    socket.emit('addOrder',{
+		orderId: this.getNext(),
+		details: {
+		    x: this.localOrder.details.x,
+		    y: this.localOrder.details.y,
+		
+		},
+		orderItems: gm.getBurger(),
+	    });
+	},
+	displayOrder: function(event) {
 	    let offset = {
 		x: event.currentTarget.getBoundingClientRect().left,
 		y: event.currentTarget.getBoundingClientRect().top,
 	    };
-	    socket.emit('addOrder', {
-		orderId: this.getNext(),
+	    this.localOrder = {
+		orderId: "T",
 		details: {
 		    x: event.clientX - 10 - offset.x,
 		    y: event.clientY - 10 - offset.y,
 		},
 		orderItems: ['Beans', 'Curry'],
-	    });
+	    };
 	},
     }
 })
