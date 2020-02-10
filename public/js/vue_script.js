@@ -37,12 +37,10 @@ const vm = new Vue({
     data: {
 	name:"",
 	email:"",
-	street:"",
-	num:"",
 	selected:"",
 	picked:"",
 	orders: {},
-	localOrder: {orderId: "", details: {x:0, y:0}, orderItems: []},
+	localOrder: {orderId: "", details: {x:0, y:0}, orderItems: [], orderInfo: []},
 	counter: 0
     },
     methods: {
@@ -78,6 +76,7 @@ const vm = new Vue({
 		
 		},
 		orderItems: gm.getBurger(),
+		orderInfo: [this.name, this.email, this.selected, this.picked]
 	    });
 	},
 	displayOrder: function(event) {
